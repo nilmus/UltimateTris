@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* palette: https://colorhunt.co/palette/ff80004c1f7a219b9deeeeee */
+:root {
+    --orange: #FF8000;
+    --purple: #4C1F7A;
+    --white: #EEEEEE;
+    --aqua: #219B9D;
+    --black: #091057;
+
+    /* streak highlights */
+    --mildest-color: #ff6200;
+    --mild-color: #ff4000;
+    --moderate-color: #ff0000;
+    --strong-color: #ff00ff;
+
+
+    --ff: "Kanit", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: clamp(0.5rem, 5vw, 1.3rem);
+    background-color: #EEEEEE;
+}
+
+.wrapper {
+    font-family: var(--ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 4rem;
+    font-size: clamp(0.5rem, 5vw, 2.5rem);
+}
+
+h1 {
+    color: var(--purple);
+    letter-spacing: 2px;
+    text-decoration: underline var(--orange);
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+    
+    a {
+        text-decoration: none;
+        color: var(--orange);
+        background-color: var(--purple);
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+
+        &:hover {
+            background-color: var(--orange);
+            color: var(--purple);
+            box-shadow: 2px 3px 0px var(--purple);
+        }
+    }
+}
+
+header {
+    background-color: var(--purple);
+
+    nav {
+        justify-content: flex-start;
+
+        a:hover {
+            background-color: var(--purple);
+            color: var(--orange);
+            box-shadow: none;
+            text-decoration: underline var(--orange);
+        }
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    
+    h1 {
+        margin-bottom: 1rem;
+    }
+    
+    h2 {
+        text-align: center;
+        color: var(--black);
+        margin: 1rem;
+    }
+
+    p {
+        text-align: center;
+        line-height: 1.5;
+        color: var(--black)
+    }
+    
+    ul {
+        line-height: 1.5;
+        color: var(--black);
+        list-style-type: circle;
+
+        li::marker {
+            color: var(--orange);
+        };
+    }
+}
+
+.orange-span {
+    color: var(--orange);
+}
+
+/* */ /* */ /* */ /* */ /* */ /* */ /* */ /* */ /* */ /* */ /* */ /* */ /* */
+
+#game-body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+#game-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#board {
+    border-collapse: collapse;
+}
+
+.cell {
+    background-color: var(--purple);
+    border: 2.5px solid var(--orange);
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.user-clicked {
+    background-color: var(--orange);
+    background-image: url("../svg/userMarker.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cpu-clicked {
+    background-color: var(--aqua);
+    background-image: url("../svg/cpuMarker.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.error-modal {
+    background-color: var(--white);
+    color: var(--purple);
+    font-size: clamp(0.5rem, 4vw, 1.5rem);
+    padding: 1rem;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.winner {
+    color: var(--orange);
+    font-size: clamp(1rem, 5vw, 2rem);
+}
+
+.play-again-btn {
+    border: none;
+    font: inherit;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--orange);
+    background-color: var(--purple);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: var(--orange);
+        color: var(--purple);
+        box-shadow: 2px 3px 0px var(--purple);
+    }   
+}
+
+.instant-win-highlight {
+    border: 5px solid var(--white);
+    animation: jump 1.5s 5;
+}
+
+@keyframes jump {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.mildest-highlight {
+    border: 1px solid var(--mildest-color);
+}
+
+.mild-highlight {
+    border: 3px solid var(--mild-color);
+}
+
+.moderate-highlight {
+    border: 5px solid var(--moderate-color);
+}
+
+.strong-highlight {
+    border: 7px solid var(--strong-color);
+}
